@@ -11,6 +11,7 @@ public class CtrMenu : MonoBehaviour
     public GameObject pMenu;
     public GameObject bAbrirMenu;
     public GameObject pMapaNavegacion;
+    public GameObject pDistancias;
     //public GameObject joystick;
 
     //SONIDOS
@@ -22,6 +23,7 @@ public class CtrMenu : MonoBehaviour
         sourceBotones.PlayOneShot(soundBotones);
         pMenu.SetActive(true);
         bAbrirMenu.SetActive(false);
+        pDistancias.SetActive(false);
         //joystick.SetActive(false);
     }
 
@@ -30,6 +32,7 @@ public class CtrMenu : MonoBehaviour
         sourceBotones.PlayOneShot(soundBotones);
         pMenu.SetActive(false);
         bAbrirMenu.SetActive(true);
+        pDistancias.SetActive(true);
         //joystick.SetActive(true);
     }
 
@@ -62,11 +65,16 @@ public class CtrMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void cerrarMapaNavegacion()
+    public void volverAlMenu_Navegacion()
     {
         sourceBotones.PlayOneShot(soundBotones);
         pMenu.SetActive(true);
         pMapaNavegacion.SetActive(false);
+    }
+
+    public void activarCamara()
+    {
+
     }
 
 }
