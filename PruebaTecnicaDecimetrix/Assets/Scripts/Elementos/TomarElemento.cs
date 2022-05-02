@@ -12,13 +12,13 @@ public class TomarElemento : MonoBehaviour
         tiempoActual = 0;
     }*/
 
-    void Update()
+    /*void Update()
     {
         if (Input.GetTouch(0).phase == TouchPhase.Began)
         {
             Handheld.Vibrate();
         }
-    }
+    }*/
 
     /*IEnumerator esperar()
     {

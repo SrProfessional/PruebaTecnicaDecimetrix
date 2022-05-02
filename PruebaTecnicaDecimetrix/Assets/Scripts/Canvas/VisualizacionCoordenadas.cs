@@ -5,7 +5,8 @@ using Mapbox.Utils;
 using Mapbox.CheapRulerCs;
 
 /// <summary>
-/// Este script implementa la lógica para la visualización de las distancias de cada elemento en metros en la UI.
+/// Este script implementa la lógica para la visualización de las distancias de cada elemento en metros en la UI y
+/// alerta sobre elementos a menos de 4m de distancia por medio de la vibración del dispositivo móvil.
 /// </summary>
 public class VisualizacionCoordenadas : MonoBehaviour
 {
@@ -35,8 +36,41 @@ public class VisualizacionCoordenadas : MonoBehaviour
         double[] puntoCilindroC = { transformCylinderC.GetGeoPosition(new Vector2d(0f, 0f), 0.15f).x, transformCylinderC.GetGeoPosition(new Vector2d(0f, 0f), 0.15f).y };
 
         //CALCULA LA DISTANCIAS ENTRE EL PLAYER Y CADA ELEMENTO Y SE MUESTRAN EN LA INTERFAZ DE USUARIO
-        txtDistCuboA.text = crPlayer.Distance(puntoPlayer, puntoCuboA).ToString("n2");
-        txtDistPrismaB.text = crPlayer.Distance(puntoPlayer, puntoPrismaB).ToString("n2");
-        txtDistCilindroC.text = crPlayer.Distance(puntoPlayer, puntoCilindroC).ToString("n2");
+        double distToCuboA = crPlayer.Distance(puntoPlayer, puntoCuboA);
+        double distToPrismaB = crPlayer.Distance(puntoPlayer, puntoPrismaB);
+        double distToCilindroC = crPlayer.Distance(puntoPlayer, puntoCilindroC);
+
+        txtDistCuboA.text = distToCuboA.ToString("n2");
+        txtDistPrismaB.text = distToPrismaB.ToString("n2");
+        txtDistCilindroC.text = distToCilindroC.ToString("n2");
+
+        if (distToCuboA <= 4f)
+        {
+            Handheld.Vibrate();
+            //bCamara.interactable = true;
+        }
+        else if(distToPrismaB <= 4f)
+        {
+            Handheld.Vibrate();
+        }
+        else if(distToCilindroC <= 4f)
+        {
+            Handheld.Vibrate();
+        }
     }
+
+    /*public void tomarCuboA()
+    {
+        ctrMenu.ActivarCamara();
+    }
+
+    public void tomarPrismaB()
+    {
+        ctrMenu.ActivarCamara();
+    }
+
+    public void tomarCilindroC()
+    {
+        ctrMenu.ActivarCamara();
+    }*/
 }
