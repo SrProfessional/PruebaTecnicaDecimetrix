@@ -34,8 +34,8 @@ public class GeolocalizacionElementos : MonoBehaviour
         //AVISA QUE ESTÁ CARGANDO MIENTRAS OBTIENE LA UBICACIÓN INICIALMENTE
         PCargando.SetActive(true);
 
-        //CONVERTIR 1,5 METROS EN EL EJE Z EN COORDENADAS LAT Y LON
-        var distanciaSeparacion = Conversions.MetersToLatLon(new Vector2d(0f, 1.5f));
+        //CONVERTIR 2 METROS EN EL EJE Z EN COORDENADAS LAT Y LON
+        var distanciaSeparacion = Conversions.MetersToLatLon(new Vector2d(0f, 2f));
 
         //CONVERTIR -5 METROS EN EL EJE X DE DISTANCIA EXTRA PARA UBICAR LOS ELEMENTOS
         var distanciaExtraACoordenadas = Conversions.MetersToLatLon(new Vector2d(-5f, 0f));

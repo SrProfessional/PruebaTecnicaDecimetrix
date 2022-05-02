@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 120197036254677122}
   - component: {fileID: 1427414106541231168}
   - component: {fileID: 8503808365389613373}
-  - component: {fileID: 5990618959882671516}
   m_Layer: 0
   m_Name: PrismB
   m_TagString: Untagged
@@ -381,18 +380,4 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8090191701241017872}
-  m_Mesh: {fileID: 0}
---- !u!64 &5990618959882671516
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8090191701241017872}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
