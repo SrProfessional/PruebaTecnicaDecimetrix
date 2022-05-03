@@ -8,7 +8,7 @@ using System.Collections;
 
 /// <summary>
 /// Este script implementa la lógica para la visualización de las distancias de cada elemento en metros en la UI,
-/// alerta sobre elementos a menos de 4m de distancia por medio de la vibración del dispositivo móvil y activa la camara al tocarlos.
+/// alerta sobre elementos a menos de 4m de distancia a una escala de 0.15f del player por medio de la vibración del dispositivo móvil y activa la camara al tocarlos.
 /// </summary>
 public class VisualizacionCoordenadas : MonoBehaviour
 {
@@ -29,6 +29,11 @@ public class VisualizacionCoordenadas : MonoBehaviour
     public GameObject prismaB;
     public GameObject cilindroC;
     public bool activarTouch;
+
+    //VARIABLES DE DISTANCIA
+    private double distToCuboA;
+    private double distToPrismaB;
+    private double distToCilindroC;
 
     protected void OnEnable()
     {
@@ -56,9 +61,9 @@ public class VisualizacionCoordenadas : MonoBehaviour
         double[] puntoCilindroC = { transformCylinderC.GetGeoPosition(new Vector2d(0f, 0f), 0.15f).x, transformCylinderC.GetGeoPosition(new Vector2d(0f, 0f), 0.15f).y };
 
         //CALCULA LA DISTANCIAS ENTRE EL PLAYER Y CADA ELEMENTO Y SE MUESTRAN EN LA INTERFAZ DE USUARIO
-        double distToCuboA = crPlayer.Distance(puntoPlayer, puntoCuboA);
-        double distToPrismaB = crPlayer.Distance(puntoPlayer, puntoPrismaB);
-        double distToCilindroC = crPlayer.Distance(puntoPlayer, puntoCilindroC);
+        distToCuboA = crPlayer.Distance(puntoPlayer, puntoCuboA);
+        distToPrismaB = crPlayer.Distance(puntoPlayer, puntoPrismaB);
+        distToCilindroC = crPlayer.Distance(puntoPlayer, puntoCilindroC);
 
         txtDistCuboA.text = distToCuboA.ToString("n2");
         txtDistPrismaB.text = distToPrismaB.ToString("n2");
@@ -66,37 +71,43 @@ public class VisualizacionCoordenadas : MonoBehaviour
 
         if (distToCuboA <= 4f)
         {
-            Handheld.Vibrate();
-
-            if (activarTouch)
+            if (activarTouch) //CAMARA DESACTIVADA
             {
                 StartCoroutine(activarCamara());
+            }
+            else if(!activarTouch) //CAMARA ACTIVADA
+            {
+                StartCoroutine(tomarElemento());
             }
 
         }
         else if(distToPrismaB <= 4f)
         {
-            Handheld.Vibrate();
-
-            if (activarTouch)
+            if (activarTouch) //CAMARA DESACTIVADA
             {
                 StartCoroutine(activarCamara());
             }
-
+            else if (!activarTouch) //CAMARA ACTIVADA
+            {
+                StartCoroutine(tomarElemento());
+            }
         }
         else if(distToCilindroC <= 4f)
         {
-            Handheld.Vibrate();
-
-            if(activarTouch)
+            if(activarTouch) //CAMARA DESACTIVADA
             {
                 StartCoroutine(activarCamara());
-            }          
+            }
+            else if (!activarTouch) //CAMARA ACTIVADA
+            {
+                StartCoroutine(tomarElemento());
+            }
         }
     }
 
     IEnumerator activarCamara()
     {
+        Handheld.Vibrate();
         var activeTouches = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches;
 
         if (activeTouches.Count > 0 && activeTouches.Count <= 1)
@@ -106,7 +117,7 @@ public class VisualizacionCoordenadas : MonoBehaviour
 
             if (Physics.Raycast(raycast, out raycastHit))
             {
-                if (raycastHit.transform.tag == "CuboA" && activarTouch)
+                if (raycastHit.transform.tag == "CuboA" && distToCuboA <= 4f)
                 {
                     activarTouch = false;
                     ctrMenu.ActivarCamara();
@@ -114,7 +125,7 @@ public class VisualizacionCoordenadas : MonoBehaviour
                     prismaB.SetActive(false);
                     cilindroC.SetActive(false);
                 }
-                else if(raycastHit.transform.tag == "PrismaB" && activarTouch)
+                else if(raycastHit.transform.tag == "PrismaB" && distToPrismaB <= 4f)
                 {
                     activarTouch = false;
                     ctrMenu.ActivarCamara();
@@ -122,7 +133,7 @@ public class VisualizacionCoordenadas : MonoBehaviour
                     prismaB.SetActive(true);
                     cilindroC.SetActive(false);
                 }
-                else if (raycastHit.transform.tag == "CilindroC" && activarTouch)
+                else if (raycastHit.transform.tag == "CilindroC" && distToCilindroC <= 4f)
                 {
                     activarTouch = false;
                     ctrMenu.ActivarCamara();
@@ -136,18 +147,26 @@ public class VisualizacionCoordenadas : MonoBehaviour
         yield return null;
     }
 
-    public void tomarCuboA()
+    IEnumerator tomarElemento()
     {
-        transformCubeA.gameObject.SetActive(false);
-    }
+        var activeTouches = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches;
 
-    public void tomarPrismaB()
-    {
-        transformPrismB.gameObject.SetActive(false);
-    }
+        if (activeTouches.Count == 2)
+        {
+            if (cuboA.activeSelf == true)
+            {
+                cuboA.SetActive(false);
+            }
+            else if(prismaB.activeSelf == true)
+            {
+                prismaB.SetActive(false);
+            }
+            else if (cilindroC.activeSelf == true)
+            {
+                cilindroC.SetActive(false);
+            }
+        }
 
-    public void tomarCilindroC()
-    {
-        transformCylinderC.gameObject.SetActive(false);
+        yield return null;
     }
 }
