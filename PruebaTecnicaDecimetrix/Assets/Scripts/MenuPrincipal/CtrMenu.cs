@@ -17,7 +17,8 @@ public class CtrMenu : MonoBehaviour
     public GameObject pMapaNavegacion;
     public GameObject pDistancias;
     public GameObject pInventario;
-    public Camera arCamera;
+    public Camera mainCamera;
+    //public Camera arCamera;
     //public GameObject joystick;
 
     //SONIDOS
@@ -121,18 +122,26 @@ public class CtrMenu : MonoBehaviour
 
     public void ActivarCamara()
     {
-        arCamera.enabled = true;
+        sourceBotones.PlayOneShot(soundBotones);
+        mainCamera.depth = -1;
+        //arCamera.enabled = true;
         bActivarCamara.SetActive(false);
         bCerrarCamara.SetActive(true);
+        bAbrirMenu.SetActive(false);
+        bInventarioNavegacion.SetActive(false);
 
         //mostrarElementosAR.AgregarElemento();
     }
 
     public void CerrarCamara()
     {
-        arCamera.enabled = false;
+        sourceBotones.PlayOneShot(soundBotones);
+        mainCamera.depth = 1;
+        //arCamera.enabled = false;
         bActivarCamara.SetActive(true);
         bCerrarCamara.SetActive(false);
+        bAbrirMenu.SetActive(true);
+        bInventarioNavegacion.SetActive(true);
     }
 
     public void DesactivarBotonesMenu()

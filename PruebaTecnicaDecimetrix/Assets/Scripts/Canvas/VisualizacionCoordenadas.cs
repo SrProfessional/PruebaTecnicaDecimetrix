@@ -59,18 +59,18 @@ public class VisualizacionCoordenadas : MonoBehaviour
         }
     }
 
-    /*public void tomarCuboA()
+    public void tomarCuboA()
     {
-        ctrMenu.ActivarCamara();
+        transformCubeA.gameObject.SetActive(false);
     }
 
     public void tomarPrismaB()
     {
-        ctrMenu.ActivarCamara();
+        transformPrismB.gameObject.SetActive(false);
     }
 
     public void tomarCilindroC()
     {
-        ctrMenu.ActivarCamara();
-    }*/
+        transformCylinderC.gameObject.SetActive(false);
+    }
 }
