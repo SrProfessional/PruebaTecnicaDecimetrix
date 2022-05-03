@@ -1,10 +1,11 @@
+using System.Collections;
 using UnityEngine;
 using TMPro;
 using Mapbox.Unity.Utilities;
 using Mapbox.Utils;
 using Mapbox.CheapRulerCs;
 using UnityEngine.InputSystem.EnhancedTouch;
-using System.Collections;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 /// <summary>
 /// Este script implementa la lógica para la visualización de las distancias de cada elemento en metros en la UI,
@@ -34,6 +35,11 @@ public class VisualizacionCoordenadas : MonoBehaviour
     private double distToCuboA;
     private double distToPrismaB;
     private double distToCilindroC;
+
+    //SONIDOS
+    public AudioSource sourceSeleccionarElemento;
+    public AudioClip soundSeleccionarElementoCorrecto;
+    public AudioClip soundSeleccionarElementoIncorrecto;
 
     protected void OnEnable()
     {
@@ -108,50 +114,86 @@ public class VisualizacionCoordenadas : MonoBehaviour
     IEnumerator activarCamara()
     {
         Handheld.Vibrate();
-        var activeTouches = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches;
 
-        if (activeTouches.Count > 0 && activeTouches.Count <= 1)
+        if (Touch.activeFingers.Count == 1 && Touch.activeFingers[0].currentTouch.isTap)
         {
-            Ray raycast = Camera.main.ScreenPointToRay(activeTouches[0].screenPosition);
+            Ray raycast = Camera.main.ScreenPointToRay(Touch.activeFingers[0].currentTouch.screenPosition);
             RaycastHit raycastHit;
 
             if (Physics.Raycast(raycast, out raycastHit))
             {
-                if (raycastHit.transform.tag == "CuboA" && distToCuboA <= 4f)
+                if (raycastHit.transform.tag == "CuboA")
                 {
-                    activarTouch = false;
-                    ctrMenu.ActivarCamara();
-                    cuboA.SetActive(true);
-                    prismaB.SetActive(false);
-                    cilindroC.SetActive(false);
+                    if(distToCuboA <= 4f)
+                    {
+                        activarTouch = false;
+                        sourceSeleccionarElemento.PlayOneShot(soundSeleccionarElementoCorrecto);
+                        ctrMenu.ActivarCamara();
+                        cuboA.SetActive(true);
+                        prismaB.SetActive(false);
+                        cilindroC.SetActive(false);
+                    }
+                    else
+                    {
+                        //activarTouch = false;
+                        sourceSeleccionarElemento.PlayOneShot(soundSeleccionarElementoIncorrecto);
+
+                        //yield return new WaitForSeconds(0.5f);
+
+                        //activarTouch = true;
+                    }
                 }
-                else if(raycastHit.transform.tag == "PrismaB" && distToPrismaB <= 4f)
-                {
-                    activarTouch = false;
-                    ctrMenu.ActivarCamara();
-                    cuboA.SetActive(false);
-                    prismaB.SetActive(true);
-                    cilindroC.SetActive(false);
+                else if(raycastHit.transform.tag == "PrismaB")
+                {      
+                    if(distToPrismaB <= 4f)
+                    {
+                        activarTouch = false;
+                        sourceSeleccionarElemento.PlayOneShot(soundSeleccionarElementoCorrecto);
+                        ctrMenu.ActivarCamara();
+                        cuboA.SetActive(false);
+                        prismaB.SetActive(true);
+                        cilindroC.SetActive(false);
+                    }
+                    else
+                    {
+                        //activarTouch = false;
+                        sourceSeleccionarElemento.PlayOneShot(soundSeleccionarElementoIncorrecto);
+
+                        //yield return new WaitForSeconds(0.5f);
+
+                        //activarTouch = true;
+                    }
                 }
-                else if (raycastHit.transform.tag == "CilindroC" && distToCilindroC <= 4f)
+                else if (raycastHit.transform.tag == "CilindroC")
                 {
-                    activarTouch = false;
-                    ctrMenu.ActivarCamara();
-                    cuboA.SetActive(false);
-                    prismaB.SetActive(false);
-                    cilindroC.SetActive(true);
+                    if(distToCilindroC <= 4f)
+                    {
+                        activarTouch = false;
+                        sourceSeleccionarElemento.PlayOneShot(soundSeleccionarElementoCorrecto);
+                        ctrMenu.ActivarCamara();
+                        cuboA.SetActive(false);
+                        prismaB.SetActive(false);
+                        cilindroC.SetActive(true);
+                    }
+                    else
+                    {
+                        //activarTouch = false;
+                        sourceSeleccionarElemento.PlayOneShot(soundSeleccionarElementoIncorrecto);
+
+                        //yield return new WaitForSeconds(0.5f);
+
+                        //activarTouch = true;
+                    }
                 }
             }
         }
 
         yield return null;
     }
-
+    
     IEnumerator tomarElemento()
     {
-        var activeTouches = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches;
-
-        if (activeTouches.Count == 2)
+        if (Touch.activeFingers.Count == 1 && Touch.activeTouches[0].tapCount == 2)
         {
             if (cuboA.activeSelf == true)
             {
