@@ -11,15 +11,12 @@ public class CtrMenu : MonoBehaviour
 {
     public GameObject pMenu;
     public GameObject bAbrirMenu;
-    //public GameObject bActivarCamara;
     public GameObject bCerrarCamara;
     public GameObject bInventarioNavegacion;
     public GameObject pMapaNavegacion;
     public GameObject pDistancias;
     public GameObject pInventario;
     public Camera mainCamera;
-    //public Camera arCamera;
-    //public GameObject joystick;
 
     //SONIDOS
     public AudioSource sourceBotones;
@@ -34,14 +31,24 @@ public class CtrMenu : MonoBehaviour
     public Button bCerrarApp;
     public Button bCerrarNavegacion;
 
-    public GameObject cuboA;
-    public GameObject prismaB;
-    public GameObject cilindroC;
+    public List<GameObject> listaElementos;
     public VisualizacionCoordenadas visualizacionCoordenadas;
+    public CtrSlotsInventario ctrSlotsInventario;
+    private bool activarBInteraccion;
 
     private void Start()
     {
         pMenu.SetActive(true);
+        activarBInteraccion = true;
+    }
+
+    private void Update()
+    {
+        if(ctrSlotsInventario.listaElementosRecogidos.Count == 3 && activarBInteraccion)
+        {
+            activarBInteraccion = false;
+            bInteraccion.interactable = true;
+        }
     }
 
     public void AbrirMenu()
@@ -51,8 +58,6 @@ public class CtrMenu : MonoBehaviour
         bAbrirMenu.SetActive(false);
         pDistancias.SetActive(false);
         bInventarioNavegacion.SetActive(false);
-        //bActivarCamara.SetActive(false);
-        //joystick.SetActive(false);
     }
 
     public void CerrarMenu()
@@ -62,8 +67,6 @@ public class CtrMenu : MonoBehaviour
         bAbrirMenu.SetActive(true);
         pDistancias.SetActive(true);
         bInventarioNavegacion.SetActive(true);
-        //bActivarCamara.SetActive(true);
-        //joystick.SetActive(true);
     }
 
     public void AbrirPInventario()
@@ -127,26 +130,27 @@ public class CtrMenu : MonoBehaviour
     {
         sourceBotones.PlayOneShot(soundBotones);
         mainCamera.depth = -1;
-        //arCamera.enabled = true;
-        //bActivarCamara.SetActive(false);
         bCerrarCamara.SetActive(true);
         bAbrirMenu.SetActive(false);
         bInventarioNavegacion.SetActive(false);
-
-        //mostrarElementosAR.AgregarElemento();
     }
 
     public void CerrarCamara()
     {
         sourceBotones.PlayOneShot(soundBotones);
-        visualizacionCoordenadas.activarTouch = true;
-        mainCamera.depth = 1;
-        //arCamera.enabled = false;
-        cuboA.SetActive(true);
-        prismaB.SetActive(true);
-        cilindroC.SetActive(true);
-        //bActivarCamara.SetActive(true);
+        visualizacionCoordenadas.activarCamara = true;
+        visualizacionCoordenadas.desactivarCamara = true;
         bCerrarCamara.SetActive(false);
+
+        for (int i = 0; i < visualizacionCoordenadas.listaElementos.Count; i++)
+        {
+            if (PlayerPrefs.GetInt(visualizacionCoordenadas.listaElementos[i].tag + "Recogido") == 0)
+            {
+                visualizacionCoordenadas.listaElementos[i].SetActive(true);
+            }
+        }
+
+        mainCamera.depth = 1;
         bAbrirMenu.SetActive(true);
         bInventarioNavegacion.SetActive(true);
     }

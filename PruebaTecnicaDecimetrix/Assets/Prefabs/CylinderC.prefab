@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3550759341210032578}
   - component: {fileID: 8480821001979885819}
   - component: {fileID: 2146439953912664822}
+  - component: {fileID: 9051145717310573153}
   m_Layer: 0
   m_Name: CylinderC
   m_TagString: Untagged
@@ -3106,3 +3107,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072700349289888302}
   m_Mesh: {fileID: 0}
+--- !u!114 &9051145717310573153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072700349289888302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea08db5f2fe32844fbd67555482a1bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombreElemento: CilindroC
+  distToPlayer: 0
+  transformPlayer: {fileID: 0}
+  transformElemento: {fileID: 0}
+  imgElemento: {fileID: 21300000, guid: 5207ceace754a6540bf139155feea31d, type: 3}

@@ -1283,7 +1283,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20022
+  m_Name: pb_Mesh44016
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1531,6 +1531,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 974424060}
     m_Modifications:
+    - target: {fileID: -980876539498729301, guid: 6404cde04dadbe745912530dc7f7c52f, type: 3}
+      propertyPath: imgElemento
+      value: 
+      objectReference: {fileID: 21300000, guid: d20e3cb593d03d1459b62a900a5e3c75, type: 3}
+    - target: {fileID: -980876539498729301, guid: 6404cde04dadbe745912530dc7f7c52f, type: 3}
+      propertyPath: transformPlayer
+      value: 
+      objectReference: {fileID: 80233803}
+    - target: {fileID: -980876539498729301, guid: 6404cde04dadbe745912530dc7f7c52f, type: 3}
+      propertyPath: transformElemento
+      value: 
+      objectReference: {fileID: 974424060}
     - target: {fileID: 120197036254677122, guid: 6404cde04dadbe745912530dc7f7c52f, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2176,7 +2188,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 436.1, y: -188}
+  m_AnchoredPosition: {x: 436.0996, y: -188}
   m_SizeDelta: {x: 900, y: 413.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &446686021
@@ -3764,7 +3776,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19920
+  m_Name: pb_Mesh43902
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4098,7 +4110,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &842723594
 GameObject:
@@ -4744,7 +4756,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20200
+  m_Name: pb_Mesh44222
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4981,7 +4993,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 908487702}
   m_OnClick:
     m_PersistentCalls:
@@ -5620,7 +5632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1605400046471130, guid: fa49ad38da3e540fca722d2ca9e1d026, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4806497037511362, guid: fa49ad38da3e540fca722d2ca9e1d026, type: 3}
       propertyPath: m_RootOrder
@@ -5835,6 +5847,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1148867787}
+  - component: {fileID: 1148867788}
   m_Layer: 0
   m_Name: CtrSlotsInventario
   m_TagString: Untagged
@@ -5854,8 +5867,25 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1148867788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148867786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1afc4b6388f14404096575828b6a2d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listaSlots:
+  - {fileID: 763680115}
+  - {fileID: 1674240731}
+  - {fileID: 309969921}
+  listaElementosRecogidos: []
 --- !u!1 &1198370225
 GameObject:
   m_ObjectHideFlags: 0
@@ -7292,7 +7322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 101.76}
+  m_AnchoredPosition: {x: 0, y: 101.759766}
   m_SizeDelta: {x: 270, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1462945708
@@ -7396,6 +7426,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1764961648}
     m_Modifications:
+    - target: {fileID: 865799585538923749, guid: 6a82977d61d97db40a382e009e4f9ea3, type: 3}
+      propertyPath: imgElemento
+      value: 
+      objectReference: {fileID: 21300000, guid: 2db506da0b0bdcf45a61f1374d4c3773, type: 3}
+    - target: {fileID: 865799585538923749, guid: 6a82977d61d97db40a382e009e4f9ea3, type: 3}
+      propertyPath: transformPlayer
+      value: 
+      objectReference: {fileID: 80233803}
+    - target: {fileID: 865799585538923749, guid: 6a82977d61d97db40a382e009e4f9ea3, type: 3}
+      propertyPath: transformElemento
+      value: 
+      objectReference: {fileID: 1764961648}
     - target: {fileID: 1768579092888512119, guid: 6a82977d61d97db40a382e009e4f9ea3, type: 3}
       propertyPath: m_Name
       value: CubeA
@@ -7539,15 +7581,14 @@ MonoBehaviour:
   txtDistCuboA: {fileID: 120687162}
   txtDistPrismaB: {fileID: 2079382316}
   txtDistCilindroC: {fileID: 498622481}
-  transformPlayer: {fileID: 80233803}
-  transformCubeA: {fileID: 1764961648}
-  transformPrismB: {fileID: 974424060}
-  transformCylinderC: {fileID: 263180649}
   ctrMenu: {fileID: 1748663364}
-  cuboA: {fileID: 2074352981}
-  prismaB: {fileID: 1447536071}
-  cilindroC: {fileID: 695868652}
-  activarTouch: 0
+  listaElementos:
+  - {fileID: 2074352981}
+  - {fileID: 1447536071}
+  - {fileID: 695868652}
+  ctrSlotsInventario: {fileID: 1148867788}
+  activarCamara: 0
+  desactivarCamara: 0
   sourceSeleccionarElemento: {fileID: 1584169924}
   soundSeleccionarElementoCorrecto: {fileID: 8300000, guid: bd835552c01ac3949a4efc95bfc573d6, type: 3}
   soundSeleccionarElementoIncorrecto: {fileID: 8300000, guid: 1a7f031f89fa0e8469ea6c32f5aa6788, type: 3}
@@ -8140,6 +8181,18 @@ PrefabInstance:
       propertyPath: m_ReflectionProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9051145717310573153, guid: f180c6cb9d286a84aaf2c4395bb8fc9a, type: 3}
+      propertyPath: imgElemento
+      value: 
+      objectReference: {fileID: 21300000, guid: 5207ceace754a6540bf139155feea31d, type: 3}
+    - target: {fileID: 9051145717310573153, guid: f180c6cb9d286a84aaf2c4395bb8fc9a, type: 3}
+      propertyPath: transformPlayer
+      value: 
+      objectReference: {fileID: 80233803}
+    - target: {fileID: 9051145717310573153, guid: f180c6cb9d286a84aaf2c4395bb8fc9a, type: 3}
+      propertyPath: transformElemento
+      value: 
+      objectReference: {fileID: 263180649}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f180c6cb9d286a84aaf2c4395bb8fc9a, type: 3}
 --- !u!4 &1528823055 stripped
@@ -8597,7 +8650,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -264, y: 101.76}
+  m_AnchoredPosition: {x: -264, y: 101.759766}
   m_SizeDelta: {x: 800, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1609792408
@@ -9041,10 +9094,12 @@ MonoBehaviour:
   bReiniciar: {fileID: 1446716334}
   bCerrarApp: {fileID: 1525120407}
   bCerrarNavegacion: {fileID: 2103997751}
-  cuboA: {fileID: 2074352981}
-  prismaB: {fileID: 1447536071}
-  cilindroC: {fileID: 695868652}
+  listaElementos:
+  - {fileID: 2074352981}
+  - {fileID: 1447536071}
+  - {fileID: 695868652}
   visualizacionCoordenadas: {fileID: 1483806518}
+  ctrSlotsInventario: {fileID: 1148867788}
 --- !u!1 &1764961647
 GameObject:
   m_ObjectHideFlags: 0
@@ -9361,7 +9416,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20446
+  m_Name: pb_Mesh44488
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
