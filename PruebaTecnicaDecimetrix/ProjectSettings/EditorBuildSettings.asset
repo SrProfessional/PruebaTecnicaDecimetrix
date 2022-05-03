@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PruebaDecimetrix.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/AR_Scene.unity
     guid: 84955e13e29048f4d87637ffdba4b98a
   m_configObjects:

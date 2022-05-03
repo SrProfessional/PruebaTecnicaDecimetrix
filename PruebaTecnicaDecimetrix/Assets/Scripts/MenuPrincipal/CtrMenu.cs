@@ -11,7 +11,7 @@ public class CtrMenu : MonoBehaviour
 {
     public GameObject pMenu;
     public GameObject bAbrirMenu;
-    public GameObject bActivarCamara;
+    //public GameObject bActivarCamara;
     public GameObject bCerrarCamara;
     public GameObject bInventarioNavegacion;
     public GameObject pMapaNavegacion;
@@ -34,7 +34,10 @@ public class CtrMenu : MonoBehaviour
     public Button bCerrarApp;
     public Button bCerrarNavegacion;
 
-    //public MostrarElementosAR mostrarElementosAR;
+    public GameObject cuboA;
+    public GameObject prismaB;
+    public GameObject cilindroC;
+    public VisualizacionCoordenadas visualizacionCoordenadas;
 
     private void Start()
     {
@@ -48,7 +51,7 @@ public class CtrMenu : MonoBehaviour
         bAbrirMenu.SetActive(false);
         pDistancias.SetActive(false);
         bInventarioNavegacion.SetActive(false);
-        bActivarCamara.SetActive(false);
+        //bActivarCamara.SetActive(false);
         //joystick.SetActive(false);
     }
 
@@ -59,7 +62,7 @@ public class CtrMenu : MonoBehaviour
         bAbrirMenu.SetActive(true);
         pDistancias.SetActive(true);
         bInventarioNavegacion.SetActive(true);
-        bActivarCamara.SetActive(true);
+        //bActivarCamara.SetActive(true);
         //joystick.SetActive(true);
     }
 
@@ -125,7 +128,7 @@ public class CtrMenu : MonoBehaviour
         sourceBotones.PlayOneShot(soundBotones);
         mainCamera.depth = -1;
         //arCamera.enabled = true;
-        bActivarCamara.SetActive(false);
+        //bActivarCamara.SetActive(false);
         bCerrarCamara.SetActive(true);
         bAbrirMenu.SetActive(false);
         bInventarioNavegacion.SetActive(false);
@@ -136,9 +139,13 @@ public class CtrMenu : MonoBehaviour
     public void CerrarCamara()
     {
         sourceBotones.PlayOneShot(soundBotones);
+        visualizacionCoordenadas.activarTouch = true;
         mainCamera.depth = 1;
         //arCamera.enabled = false;
-        bActivarCamara.SetActive(true);
+        cuboA.SetActive(true);
+        prismaB.SetActive(true);
+        cilindroC.SetActive(true);
+        //bActivarCamara.SetActive(true);
         bCerrarCamara.SetActive(false);
         bAbrirMenu.SetActive(true);
         bInventarioNavegacion.SetActive(true);
