@@ -16,7 +16,10 @@ public class CtrMenu : MonoBehaviour
     public GameObject pMapaNavegacion;
     public GameObject pDistancias;
     public GameObject pInventario;
+    public GameObject pInteraccion;
     public Camera mainCamera;
+    public GameObject camara;
+    public GameObject arCamara;
 
     //SONIDOS
     public AudioSource sourceBotones;
@@ -30,6 +33,9 @@ public class CtrMenu : MonoBehaviour
     public Button bReiniciar;
     public Button bCerrarApp;
     public Button bCerrarNavegacion;
+    public Button bSlot1;
+    public Button bSlot2;
+    public Button bSlot3;
 
     public List<GameObject> listaElementos;
     public VisualizacionCoordenadas visualizacionCoordenadas;
@@ -105,6 +111,12 @@ public class CtrMenu : MonoBehaviour
     public void AbrirPInteraccion()
     {
         sourceBotones.PlayOneShot(soundBotones);
+
+        pInteraccion.SetActive(true);
+        pMenu.SetActive(false);
+        bSlot1.enabled = true;
+        bSlot2.enabled = true;
+        bSlot3.enabled = true;
     }
 
     public void ReiniciarApp()
@@ -129,6 +141,10 @@ public class CtrMenu : MonoBehaviour
     public void ActivarCamara()
     {
         sourceBotones.PlayOneShot(soundBotones);
+
+        //PONER TAG DE MAIN CAMERA A LA AR CAMERA
+        arCamara.tag = "MainCamera";
+        camara.tag = "Untagged";
         mainCamera.depth = -1;
         bCerrarCamara.SetActive(true);
         bAbrirMenu.SetActive(false);
@@ -138,6 +154,10 @@ public class CtrMenu : MonoBehaviour
     public void CerrarCamara()
     {
         sourceBotones.PlayOneShot(soundBotones);
+
+        //PONER TAG DE MAIN CAMERA A LA CAMARA NORMAL
+        arCamara.tag = "Untagged"; 
+        camara.tag = "MainCamera";
         visualizacionCoordenadas.activarCamara = true;
         visualizacionCoordenadas.desactivarCamara = true;
         bCerrarCamara.SetActive(false);

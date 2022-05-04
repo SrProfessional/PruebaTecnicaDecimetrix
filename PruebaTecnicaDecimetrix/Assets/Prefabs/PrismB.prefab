@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1427414106541231168}
   - component: {fileID: 8503808365389613373}
   - component: {fileID: -980876539498729301}
+  - component: {fileID: -4576232084819481799}
   m_Layer: 0
   m_Name: PrismB
   m_TagString: Untagged
@@ -399,3 +400,15 @@ MonoBehaviour:
   transformPlayer: {fileID: 0}
   transformElemento: {fileID: 0}
   imgElemento: {fileID: 21300000, guid: d20e3cb593d03d1459b62a900a5e3c75, type: 3}
+--- !u!114 &-4576232084819481799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8090191701241017872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18285645a0e6f84d9ebfc2abf4a8428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
