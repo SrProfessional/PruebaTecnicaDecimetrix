@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8480821001979885819}
   - component: {fileID: 2146439953912664822}
   - component: {fileID: 9051145717310573153}
-  - component: {fileID: -8651292513288570986}
+  - component: {fileID: -5931192620744820770}
   m_Layer: 0
   m_Name: CylinderC
   m_TagString: Untagged
@@ -3125,15 +3125,16 @@ MonoBehaviour:
   transformPlayer: {fileID: 0}
   transformElemento: {fileID: 0}
   imgElemento: {fileID: 21300000, guid: 5207ceace754a6540bf139155feea31d, type: 3}
---- !u!114 &-8651292513288570986
+--- !u!114 &-5931192620744820770
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072700349289888302}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d18285645a0e6f84d9ebfc2abf4a8428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0.002

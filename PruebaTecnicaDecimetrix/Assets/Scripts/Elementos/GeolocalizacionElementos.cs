@@ -40,7 +40,7 @@ public class GeolocalizacionElementos : MonoBehaviour
         //CONVERTIR -5 METROS EN EL EJE X DE DISTANCIA EXTRA PARA UBICAR LOS ELEMENTOS
         var distanciaExtraACoordenadas = Conversions.MetersToLatLon(new Vector2d(-5f, 0f));
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
 
         //TERMINA DE CARGAR
         PCargando.SetActive(false);

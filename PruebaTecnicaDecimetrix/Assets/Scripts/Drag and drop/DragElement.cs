@@ -1,74 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
+/// <summary>
+/// Este script permite mover los objetos cuando se están tocando.
+/// </summary>
 public class DragElement : MonoBehaviour
 {
-    private bool holding;
+    public float speed;
 
-    protected void OnEnable()
+    private void Update()
     {
-        EnhancedTouchSupport.Enable();
-    }
-
-    protected void OnDisable()
-    {
-        EnhancedTouchSupport.Disable();
-    }
-
-    void Start()
-    {
-        holding = false;
-    }
-
-    void Update()
-    {
-        // One finger
-        if (Touch.activeFingers.Count == 1)
+        if(Touch.activeFingers.Count == 1)
         {
-            // Tap on Object
-            if (Touch.activeTouches[0].isInProgress)
-            {
-                Ray raycast = Camera.main.ScreenPointToRay(Touch.activeFingers[0].currentTouch.screenPosition);
-                RaycastHit raycastHit;
+            Ray raycast = Camera.main.ScreenPointToRay(Touch.activeFingers[0].currentTouch.screenPosition);
+            RaycastHit raycastHit;
 
-                if (Physics.Raycast(raycast, out raycastHit))
+            if(Physics.Raycast(raycast, out raycastHit))
+            {
+                if(raycastHit.transform.gameObject == gameObject)
                 {
-                    if (raycastHit.transform.gameObject == gameObject)
-                    {
-                        transform.position = new Vector3(Touch.activeTouches[0].screenPosition.x, Touch.activeTouches[0].screenPosition.y, transform.position.z);
-                    }
+                    transform.position = new Vector3(transform.position.x + Touch.activeTouches[0].delta.x * speed, transform.position.y + Touch.activeTouches[0].delta.y * speed,
+                    transform.position.z);
                 }
             }
-
-            // Release
-            if (Touch.activeTouches[0].ended)
+            
+            /*if (Touch.activeTouches[0].isInProgress)
             {
-                holding = false;
-            }
+                transform.position = new Vector3(transform.position.x + Touch.activeTouches[0].delta.x * speed, transform.position.y + Touch.activeTouches[0].delta.y * speed,
+                    transform.position.z);
+            }*/
         }
     }
-
-    /*void Move()
-    {
-        Ray raycast = Camera.main.ScreenPointToRay(Touch.activeFingers[0].currentTouch.screenPosition);
-        RaycastHit raycastHit;
-
-        if (Physics.Raycast(raycast, out raycastHit, 30.0f, LayerMask.GetMask("Elements")))
-        {
-            transform.position = new Vector3(raycastHit.point.x, raycastHit.point.y, transform.position.z);
-        }
-
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-        // The GameObject this script attached should be on layer "Surface"
-        if (Physics.Raycast(ray, out hit, 30.0f, LayerMask.GetMask("Surface")))
-        {
-            transform.position = new Vector3(hit.point.x,
-                                             transform.position.y,
-                                             hit.point.z);
-        }
-    }*/
 }

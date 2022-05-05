@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1990430876189016768}
   - component: {fileID: 4881755877582318849}
   - component: {fileID: 865799585538923749}
-  - component: {fileID: 8265557051172364910}
+  - component: {fileID: 613538340034866920}
   m_Layer: 0
   m_Name: CubeA
   m_TagString: Untagged
@@ -317,15 +317,16 @@ MonoBehaviour:
   transformPlayer: {fileID: 0}
   transformElemento: {fileID: 0}
   imgElemento: {fileID: 21300000, guid: 2db506da0b0bdcf45a61f1374d4c3773, type: 3}
---- !u!114 &8265557051172364910
+--- !u!114 &613538340034866920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768579092888512119}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d18285645a0e6f84d9ebfc2abf4a8428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0.002

@@ -42,10 +42,15 @@ public class CtrMenu : MonoBehaviour
     public CtrSlotsInventario ctrSlotsInventario;
     private bool activarBInteraccion;
 
+    public GameObject animDobleTouch;
+    public Transform transformImgDobleTouch;
+    public bool activarAnimacionDobleTouch;
+
     private void Start()
     {
         pMenu.SetActive(true);
         activarBInteraccion = true;
+        activarAnimacionDobleTouch = false;
     }
 
     private void Update()
@@ -54,6 +59,11 @@ public class CtrMenu : MonoBehaviour
         {
             activarBInteraccion = false;
             bInteraccion.interactable = true;
+        }
+
+        if(activarAnimacionDobleTouch)
+        {
+            StartCoroutine(EscalarAvisoDobleTouch());
         }
     }
 
@@ -149,6 +159,8 @@ public class CtrMenu : MonoBehaviour
         bCerrarCamara.SetActive(true);
         bAbrirMenu.SetActive(false);
         bInventarioNavegacion.SetActive(false);
+        animDobleTouch.SetActive(true);
+        activarAnimacionDobleTouch = true;
     }
 
     public void CerrarCamara()
@@ -173,6 +185,9 @@ public class CtrMenu : MonoBehaviour
         mainCamera.depth = 1;
         bAbrirMenu.SetActive(true);
         bInventarioNavegacion.SetActive(true);
+        activarAnimacionDobleTouch = false;
+        animDobleTouch.SetActive(false);
+        transformImgDobleTouch.localScale = new Vector3(0.7678616f, 0.7678616f, 0.7678616f);
     }
 
     public void DesactivarBotonesMenu()
@@ -193,5 +208,36 @@ public class CtrMenu : MonoBehaviour
         bMapaNavegacion.interactable = true;
         bReiniciar.interactable = true;
         bCerrarApp.interactable = true;
+    }
+
+    IEnumerator EscalarAvisoDobleTouch()
+    {
+        activarAnimacionDobleTouch = false;
+
+        float valorAgregado = 0.025f;
+
+        for(int i = 0; i < 8; i++)
+        {
+            transformImgDobleTouch.localScale = new Vector3(transformImgDobleTouch.localScale.x + valorAgregado, transformImgDobleTouch.localScale.y + valorAgregado,
+                transformImgDobleTouch.localScale.z + valorAgregado);
+
+            yield return null;
+            yield return null;
+        }
+
+        yield return null;
+
+        for (int i = 0; i < 8; i++)
+        {
+            transformImgDobleTouch.localScale = new Vector3(transformImgDobleTouch.localScale.x - valorAgregado, transformImgDobleTouch.localScale.y - valorAgregado,
+                transformImgDobleTouch.localScale.z - valorAgregado);
+
+            yield return null;
+            yield return null;
+        }
+
+        yield return null;
+
+        activarAnimacionDobleTouch = true;
     }
 }

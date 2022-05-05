@@ -135,6 +135,9 @@ public class VisualizacionCoordenadas : MonoBehaviour
                     listaElementos[i].SetActive(false);
                     ctrSlotsInventario.listaSlots[ctrSlotsInventario.listaElementosRecogidos.Count].sprite = listaElementos[i].GetComponent<ClaseElemento>().imgElemento;
                     ctrSlotsInventario.listaElementosRecogidos.Add(listaElementos[i]);
+                    ctrMenu.activarAnimacionDobleTouch = false;
+                    ctrMenu.animDobleTouch.SetActive(false);
+                    ctrMenu.transformImgDobleTouch.localScale = new Vector3(0.7678616f, 0.7678616f, 0.7678616f);
                     PlayerPrefs.SetInt(listaElementos[i].tag + "Recogido", 1);
                     listaElementos.RemoveAt(i);
 
